@@ -1,0 +1,18 @@
+{
+    "1": "Error",
+    "2": "Sucess",
+    "3": "Registro(s) encontrado(s)",
+    "4": "Registro excluído",
+    "5": "Registro incluído",
+    "100": "Campo(s) obrigatório(s)",
+    "200": "Character inserido com sucesso!",
+    "201": "Character atualizado com sucesso!",
+    "202": "Character excluído com sucesso!",
+    "203": "ID da casa inválido!",
+    "204": "Erro na busca de characters",
+    "205": "Erro na busca por id de um character",
+    "206": "Erro no insert de um character",
+    "207": "Erro no update de um character",
+    "208": "Erro no delete de um character",
+    "209": "Nenhum character encontrado para ser excluido"
+}

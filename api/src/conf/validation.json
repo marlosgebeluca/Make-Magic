@@ -1,0 +1,9 @@
+{
+    "character": {
+        "name": true,
+        "role": true,
+        "school": true,
+        "house": true,
+        "patronus": false
+    }
+}

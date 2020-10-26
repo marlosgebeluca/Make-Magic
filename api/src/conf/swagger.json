@@ -1,0 +1,228 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Make Magic",
+        "description": "Make Magic - Desafio Dextra",
+        "contact": {
+            "email": "marlosgebeluca@gmail.com"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "tags": [{
+        "name": "Make Magic",
+        "description": "API do desafio Dextra"
+    }],
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/api/characters": {
+            "get": {
+                "tags": [
+                    "characters"
+                ],
+                "summary": "Busca todos os characters cadastrados",
+                "description": "Busca todos os characters cadastrados",
+                "operationId": "find",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "house",
+                    "in": "query",
+                    "description": "id da propriedade house do character",
+                    "required": false,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Retorna JSON com registros buscados",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/CharactersResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro na requisição"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "characters"
+                ],
+                "summary": "Insere um novo character",
+                "description": "Insere um novo character",
+                "operationId": "insert",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "Json contendo as propredades de um personagem",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/Character"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Character inserido com sucesso!"
+                    },
+                    "400": {
+                        "description": "Erro na requisição"
+                    }
+                }
+            }
+        },
+        "/api/characters/{id}": {
+            "get": {
+                "tags": [
+                    "characters"
+                ],
+                "summary": "Busca um character cadastrados",
+                "description": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "Codigo do character cadastrados",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int64"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Retorna JSON com registro buscado",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/CharactersResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro na requisição"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "characters"
+                ],
+                "summary": "Atualiza um character",
+                "description": "Atualiza um character",
+                "operationId": "update",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "description": "Codigo do character a ser atualizado",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Json contendo as propredades de um personagem",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Character"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Character atualizado com sucesso!"
+                    },
+                    "400": {
+                        "description": "Erro na requisição"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "characters"
+                ],
+                "summary": "Deleta um character",
+                "description": "Deleta um character",
+                "operationId": "delete",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "Codigo do character a ser deletado",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int64"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Character excluído com sucesso!"
+                    },
+                    "400": {
+                        "description": "Erro na requisição"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "CharactersResponse": {
+            "type": "object",
+            "properties": {
+                "character": {
+                    "type": "array",
+                    "$ref": "#/definitions/Character"
+                }
+            }
+        },
+        "Character": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "school": {
+                    "type": "string"
+                },
+                "house": {
+                    "type": "string"
+                },
+                "patronus": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
